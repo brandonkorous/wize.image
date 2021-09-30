@@ -1,0 +1,22 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: wizeimageodata-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        app: wizeimageodata
+  template:
+    metadata:
+      labels:
+        app: wizeimageodata 
+    spec:
+      containers:
+        - name: wizeimageodata 
+          image: brandonkorouscontainers.azurecr.io/wizeimageodata 
+          ports:
+          - containerPort: 80
+          env:
+          - name: "ASPNETCORE_ENVIRONMENT"
+            value: "Development"
