@@ -23,50 +23,50 @@ spec:
           - name: "Auth0_Authority"
             valueFrom:
               secretKeyRef: 
-                name: auth0-images-secrets
+                name: auth0-image-secrets
                 key: Auth0_Authority
           - name: "Auth0_ClientId"
             valueFrom:
               secretKeyRef: 
-                name: auth0-images-secrets
+                name: auth0-image-secrets
                 key: Auth0_ClientId
           - name: "Auth0_ClientSecret"
             valueFrom:
               secretKeyRef: 
-                name: auth0-images-secrets
+                name: auth0-image-secrets
                 key: Auth0_ClientSecret
           - name: "Auth0_Audience"
             valueFrom:
               secretKeyRef: 
-                name: auth0-images-secrets
+                name: auth0-image-secrets
                 key: Auth0_Audience
           - name: "JwtAuthentication_ValidAudience"
             valueFrom:
               secretKeyRef: 
-                name: auth0-images-secrets
+                name: authentication-image-secrets
                 key: JwtAuthentication_ValidAudience
           - name: "JwtAuthentication_ValidIssuer"
             valueFrom:
               secretKeyRef: 
-                name: auth0-images-secrets
+                name: authentication-image-secrets
                 key: JwtAuthentication_ValidIssuer
           - name: "ConnectionStrings_WizeWorksContext"
             valueFrom:
               secretKeyRef: 
-                name: auth0-images-secrets
+                name: connectionstrings-image-secrets
                 key: ConnectionStrings_WizeWorksContext
           - name: "ConnectionStrings_TenantsContext"
             valueFrom:
               secretKeyRef: 
-                name: auth0-images-secrets
+                name: connectionstrings-image-secrets
                 key: ConnectionStrings_TenantsContext
           - name: "ConnectionStrings_AzureBlobStorage"
             valueFrom:
               secretKeyRef: 
-                name: auth0-images-secrets
+                name: connectionstrings-image-secrets
                 key: ConnectionStrings_AzureBlobStorage
           - name: "ApplicationInsights_ConnectionString"
             valueFrom:
               secretKeyRef: 
-                name: auth0-images-secrets
+                name: appinsights-image-secrets
                 key: ApplicationInsights_ConnectionString
