@@ -45,11 +45,11 @@ spec:
               secretKeyRef: 
                 name: auth0-images-secrets
                 key: JwtAuthentication_ValidAudience
-          - name: "JwtAuthentication_IssuerAudience"
+          - name: "JwtAuthentication_ValidIssuer"
             valueFrom:
               secretKeyRef: 
                 name: auth0-images-secrets
-                key: JwtAuthentication_IssuerAudience
+                key: JwtAuthentication_ValidIssuer
           - name: "ConnectionStrings_WizeWorksContext"
             valueFrom:
               secretKeyRef: 
