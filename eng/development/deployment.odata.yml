@@ -20,3 +20,53 @@ spec:
           env:
           - name: "ASPNETCORE_ENVIRONMENT"
             value: "Development"
+          - name: "Auth0_Authority"
+            valueFrom:
+              secretKeyRef: 
+                name: auth0-images-secrets
+                key: Auth0_Authority
+          - name: "Auth0_ClientId"
+            valueFrom:
+              secretKeyRef: 
+                name: auth0-images-secrets
+                key: Auth0_ClientId
+          - name: "Auth0_ClientSecret"
+            valueFrom:
+              secretKeyRef: 
+                name: auth0-images-secrets
+                key: Auth0_ClientSecret
+          - name: "Auth0_Audience"
+            valueFrom:
+              secretKeyRef: 
+                name: auth0-images-secrets
+                key: Auth0_Audience
+          - name: "JwtAuthentication_ValidAudience"
+            valueFrom:
+              secretKeyRef: 
+                name: auth0-images-secrets
+                key: JwtAuthentication_ValidAudience
+          - name: "JwtAuthentication_IssuerAudience"
+            valueFrom:
+              secretKeyRef: 
+                name: auth0-images-secrets
+                key: JwtAuthentication_IssuerAudience
+          - name: "ConnectionStrings_WizeWorksContext"
+            valueFrom:
+              secretKeyRef: 
+                name: auth0-images-secrets
+                key: ConnectionStrings_WizeWorksContext
+          - name: "ConnectionStrings_TenantsContext"
+            valueFrom:
+              secretKeyRef: 
+                name: auth0-images-secrets
+                key: ConnectionStrings_TenantsContext
+          - name: "ConnectionStrings_AzureBlobStorage"
+            valueFrom:
+              secretKeyRef: 
+                name: auth0-images-secrets
+                key: ConnectionStrings_AzureBlobStorage
+          - name: "ApplicationInsights_ConnectionString"
+            valueFrom:
+              secretKeyRef: 
+                name: auth0-images-secrets
+                key: ApplicationInsights_ConnectionString
