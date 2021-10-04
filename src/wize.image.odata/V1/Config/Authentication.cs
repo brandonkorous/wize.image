@@ -17,7 +17,8 @@ namespace wize.image.odata.V1.Config
             JwtModel jwt = new JwtModel();
             configuration.GetSection("JwtAuthentication").Bind(jwt);
             services.Configure<JwtModel>(configuration.GetSection("JwtAuthentication"));
-
+            jwt.ValidAudience = Environment.GetEnvironmentVariable("JwtAuthentication_ValidAudience");
+            jwt.ValidIssuer = Environment.GetEnvironmentVariable("JwtAuthentication_ValidIssuer");
 
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
