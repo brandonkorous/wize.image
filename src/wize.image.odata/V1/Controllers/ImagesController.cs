@@ -136,7 +136,7 @@ namespace wize.image.odata.V1.Controllers
 
             var image = _context.Images.Find(imageId);
 
-            CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(_config.GetConnectionString("AzureBlobStorage"));
+            CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(Environment.GetEnvironmentVariable("ConnectionStrings_AzureBlobStorage"));
             CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
             string strContainerName = "uploads";
             CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference(strContainerName);
@@ -157,7 +157,7 @@ namespace wize.image.odata.V1.Controllers
 
             var image = _context.Images.Find(imageId);
 
-            CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(_config.GetConnectionString("AzureBlobStorage"));
+            CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(Environment.GetEnvironmentVariable("ConnectionStrings_AzureBlobStorage"));
             CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
             string strContainerName = "uploads";
             CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference(strContainerName);
@@ -191,7 +191,7 @@ namespace wize.image.odata.V1.Controllers
             try
             {
                 var model = (ImageDTO)parameters["model"];
-                CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(_config.GetConnectionString("AzureBlobStorage"));
+                CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(Environment.GetEnvironmentVariable("ConnectionStrings_AzureBlobStorage"));
                 CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
                 string strContainerName = "uploads";
                 CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference(strContainerName);
