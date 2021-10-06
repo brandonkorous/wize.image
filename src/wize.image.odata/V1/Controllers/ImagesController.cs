@@ -48,7 +48,7 @@ namespace wize.image.odata.V1.Controllers
         /// </summary>
         /// <returns>IQueryable of requested type.</returns>
         /// 
-        [Authorize("list:image:images")]
+        [Authorize("list:image")]
         [ODataRoute]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -74,7 +74,7 @@ namespace wize.image.odata.V1.Controllers
         /// </summary>
         /// <param name="id">Key value</param>
         /// <returns>Data model</returns>
-        [Authorize("read:image:images")]
+        [Authorize("read:image")]
         [ODataRoute("({id})")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -106,7 +106,7 @@ namespace wize.image.odata.V1.Controllers
         /// </summary>
         /// <param name="model">Data model</param>
         /// <returns>Data model</returns>
-        [Authorize("add:image:images")]
+        [Authorize("add:image")]
         [ODataRoute]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -179,7 +179,7 @@ namespace wize.image.odata.V1.Controllers
             return null;
         }
 
-        [Authorize("update:image:images")]
+        [Authorize("update:image")]
         [HttpPost]
         //[ODataRoute("UploadImage")]
         [Produces("application/json")]
