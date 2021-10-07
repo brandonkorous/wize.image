@@ -72,7 +72,7 @@ stages:
               action: createSecret
               secretType: generic
               secretName: connectionstrings-image-secrets
-              secretArguments: --from-literal=ConnectionStrings_AzureBlobStorage="$(ConnectionStrings:AzureBlobStorage)" --from-literal=ConnectionStrings_TenantsContext="$(ConnectionStrings:TenantsContext)" --from-literal=ConnectionStrings_WizeWorksContext="$(ConnectionStrings:WizeWorksContext)"
+              secretArguments: --from-literal=ConnectionStrings_AzureBlobStorage="$(ConnectionStrings:AzureBlobStorage)" --from-literal=ConnectionStrings_TenantsContext="$(ConnectionStrings:TenantsContext)" --from-literal=ConnectionStrings_WizeWorksContext="$(ConnectionStrings:WizeWorksContext)" --from-literal=ConnectionStrings_Sentry="$(ConnectionStrings:Sentry)"
               kubernetesServiceConnection: 'svc-con-aks-korous-kube-development'
               namespace: development
           - task: KubernetesManifest@0
