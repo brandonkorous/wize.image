@@ -65,6 +65,7 @@ namespace wize.image.odata
             //app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseSentryTracing();
 
             app.UseJwt();
             app.UseOpenAPI(provider);

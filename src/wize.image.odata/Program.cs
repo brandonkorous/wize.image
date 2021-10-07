@@ -25,6 +25,7 @@ namespace wize.image.odata
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseSentry(Environment.GetEnvironmentVariable("ConnectionStrings_Sentry"));
                     webBuilder.UseStartup<Startup>();
                 });
     }
