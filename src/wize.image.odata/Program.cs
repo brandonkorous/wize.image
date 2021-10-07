@@ -21,6 +21,7 @@ namespace wize.image.odata
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     config.AddEnvironmentVariables();
+                    config.AddJsonFile("appsettings.development.user.json", optional: true, reloadOnChange: true);
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

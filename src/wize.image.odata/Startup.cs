@@ -45,13 +45,13 @@ namespace wize.image.odata
             services.AddTransient<ITenantProvider, TenantDatabaseProvider>();
             services.AddDbContext<ImageContext>(options =>
             {
-                options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings_WizeWorksContext"));
+                options.UseSqlServer(Configuration.GetValue<string>("ConnectionStrings_WizeWorksContext"));
             });
             services.AddDbContext<TenantContext>(options =>
             {
-                options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings_TenantsContext"));
+                options.UseSqlServer(Configuration.GetValue<string>("ConnectionStrings_TenantsContext"));
             });
-            services.AddApplicationInsightsTelemetry(Environment.GetEnvironmentVariable("ApplicationInsights_ConnectionString"));
+            services.AddApplicationInsightsTelemetry(Configuration.GetValue<string>("ApplicationInsights_ConnectionString"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
