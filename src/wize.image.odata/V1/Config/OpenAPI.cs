@@ -35,7 +35,7 @@ namespace wize.image.odata.V1.Config
                 {
                     if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
                     {
-                        options.SwaggerEndpoint($"/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+                        options.SwaggerEndpoint($"{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
                         options.EnableDeepLinking();
                     }
                     else
