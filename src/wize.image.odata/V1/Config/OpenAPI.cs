@@ -25,14 +25,16 @@ namespace wize.image.odata.V1.Config
 
         public static IApplicationBuilder UseOpenAPI(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {
-            app.UseSwagger();
+            //app.UseSwagger(options =>
+            //{
+            //    options.RouteTemplate
+            //});
             app.UseSwaggerUI(options =>
             {
                 foreach (var description in provider.ApiVersionDescriptions)
                 {
                     if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
                     {
-                        options.RoutePrefix = "image-odata";
                         options.SwaggerEndpoint($"{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
                         options.EnableDeepLinking();
                     }
