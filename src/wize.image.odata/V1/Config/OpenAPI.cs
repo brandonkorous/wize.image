@@ -25,10 +25,10 @@ namespace wize.image.odata.V1.Config
 
         public static IApplicationBuilder UseOpenAPI(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {
-            //app.UseSwagger(options =>
-            //{
+            app.UseSwagger(options =>
+            {
             //    options.RouteTemplate
-            //});
+            });
             app.UseSwaggerUI(options =>
             {
                 foreach (var description in provider.ApiVersionDescriptions)
