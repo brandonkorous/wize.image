@@ -68,7 +68,7 @@ spec:
           - name: "ConnectionStrings_Sentry"
             valueFrom:
               secretKeyRef: 
-                name: connectionstrings-contents-secrets
+                name: connectionstrings-image-secrets
                 key: ConnectionStrings_Sentry
           - name: "ApplicationInsights_ConnectionString"
             valueFrom:
