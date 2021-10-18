@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +40,7 @@ namespace wize.image.odata.V1.Config
                 options.AddPolicy("update:image", policy => policy.Requirements.Add(new HasScopeRequirement("update:image", jwt.ValidIssuer)));
                 options.AddPolicy("delete:image", policy => policy.Requirements.Add(new HasScopeRequirement("delete:image", jwt.ValidIssuer)));
             });
+            services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
             return services;
         }
