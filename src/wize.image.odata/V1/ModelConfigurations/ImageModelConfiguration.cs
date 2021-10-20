@@ -36,7 +36,7 @@ namespace wize.image.odata.V1.ModelConfigurations
             action.Parameter<int>("width");
             action.Parameter<int>("height");
             action.Returns<FileContentResult>();
-            builder.Action("UploadImage").Returns<Guid>().Parameter<ImageDTO>("model");
+            builder.Action("UploadImage").Returns<Guid>().Parameter<ImageDTO>("model").Required();
             return model;
         }
 

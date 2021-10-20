@@ -23,6 +23,10 @@ namespace wize.image.odata
                     config.AddEnvironmentVariables();
                     config.AddJsonFile("appsettings.development.user.json", optional: true, reloadOnChange: true);
                 })
+                .ConfigureLogging(logging =>
+                {
+                    logging.AddConsole();
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseSentry(Environment.GetEnvironmentVariable("ConnectionStrings_Sentry"));
