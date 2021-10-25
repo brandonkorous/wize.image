@@ -87,6 +87,18 @@ namespace wize.image.odata.V1.Controllers
             return null;
         }
 
+        [HttpPost]
+        //[ODataRoute("Something")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //[EnableQuery(AllowedFunctions = AllowedFunctions.None, AllowedQueryOptions = AllowedQueryOptions.None)]
+        public virtual async Task<IActionResult> Something([FromBody] SomethingModel model)
+        {
+            return Ok(model);
+        }
+
         [Authorize("update:image")]
         [HttpPost]
         //[ODataRoute("UploadImage")]
@@ -99,7 +111,18 @@ namespace wize.image.odata.V1.Controllers
         {
             try
             {
+                if(parameters == null || !parameters.ContainsKey("model"))
+                {
+                    return BadRequest();
+                }
                 var model = (ImageDTO)parameters["model"];
+                TryValidateModel(model);
+
+                if(!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(_config.GetValue<string>("ConnectionStrings_AzureBlobStorage"));
                 CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
                 string strContainerName = "uploads";

@@ -26,17 +26,21 @@ namespace wize.image.odata.V1.ModelConfigurations
 
         private EntityTypeConfiguration<Image> BuildDefault(ODataModelBuilder builder)
         {
+
             var model = builder.EntitySet<Image>("Images").EntityType;
             model.HasKey(m => m.ImageId);
             
             builder.Namespace = "";
             builder.Action("GetImage").Returns<FileContentResult>().Parameter<Guid>("imageId");
+            
             var action = builder.Action("GetSizedImage");
             action.Parameter<Guid>("imageId");
             action.Parameter<int>("width");
             action.Parameter<int>("height");
             action.Returns<FileContentResult>();
+
             builder.Action("UploadImage").Returns<Guid>().Parameter<ImageDTO>("model").Required();
+            builder.Action("Something").Returns<SomethingModel>().Parameter<SomethingModel>("model");
             return model;
         }
 

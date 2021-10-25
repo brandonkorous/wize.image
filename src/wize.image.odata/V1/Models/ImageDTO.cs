@@ -12,7 +12,7 @@ namespace wize.image.odata.V1.Models
     public class ImageDTO// : Image
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid ImageId { get; set; }
+        public Guid? ImageId { get; set; }
         public string Name { get; set; }
         public string OriginalName { get; set; }
         public string Url { get; set; }
