@@ -87,17 +87,17 @@ namespace wize.image.odata.V1.Controllers
             return null;
         }
 
-        [HttpPost]
-        //[ODataRoute("Something")]
-        [Produces("application/json")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //[EnableQuery(AllowedFunctions = AllowedFunctions.None, AllowedQueryOptions = AllowedQueryOptions.None)]
-        public virtual async Task<IActionResult> Something([FromBody] SomethingModel model)
-        {
-            return Ok(model);
-        }
+        //[HttpPost]
+        ////[ODataRoute("Something")]
+        //[Produces("application/json")]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status201Created)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        ////[EnableQuery(AllowedFunctions = AllowedFunctions.None, AllowedQueryOptions = AllowedQueryOptions.None)]
+        //public virtual async Task<IActionResult> Something([FromBody] SomethingModel model)
+        //{
+        //    return Ok(model);
+        //}
 
         [Authorize("update:image")]
         [HttpPost]
