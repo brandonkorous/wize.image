@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace wize.image.odata.V1.Config
 {
-    public class HasScopeHandler : AuthorizationHandler<HasScopeRequirement>
+    public class HasPermissionsHandler : AuthorizationHandler<HasPermissionsRequirement>
     {
-        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, HasScopeRequirement requirement)
+        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, HasPermissionsRequirement requirement)
         {
             if (!context.User.HasClaim(c => c.Type == "permissions" && c.Issuer == requirement.Issuer))
                 return Task.CompletedTask;
 
-            var scopes = context.User.FindFirst(c => c.Type == "permissions" && c.Issuer == requirement.Issuer).Value.Split(' ');
+            var permissions = context.User.FindFirst(c => c.Type == "permissions" && c.Issuer == requirement.Issuer).Value.Split(' ');
 
-            if (scopes.Any(s => s == requirement.Scope))
+            if (permissions.Any(p => p == requirement.Permissions))
                 context.Succeed(requirement);
 
             return Task.CompletedTask;

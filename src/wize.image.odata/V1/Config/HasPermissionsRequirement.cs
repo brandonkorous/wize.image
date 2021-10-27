@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace wize.image.odata.V1.Config
 {
-    public class HasScopeRequirement : IAuthorizationRequirement
+    public class HasPermissionsRequirement : IAuthorizationRequirement
     {
         public string Issuer { get; }
-        public string Scope { get; }
+        public string Permissions { get; }
 
-        public HasScopeRequirement(string scope, string issuer)
+        public HasPermissionsRequirement(string permissions, string issuer)
         {
-            Scope = scope ?? throw new ArgumentNullException(nameof(scope));
+            Permissions = permissions ?? throw new ArgumentNullException(nameof(permissions));
             Issuer = issuer ?? throw new ArgumentNullException(nameof(issuer));
         }
     }
