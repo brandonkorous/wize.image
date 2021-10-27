@@ -13,9 +13,9 @@ namespace wize.image.odata.V1.Config
             if (!context.User.HasClaim(c => c.Type == "permissions" && c.Issuer == requirement.Issuer))
                 return Task.CompletedTask;
 
-            var permissions = context.User.FindFirst(c => c.Type == "permissions" && c.Issuer == requirement.Issuer).Value.Split(' ');
+            var permissions = context.User.FindAll(c => c.Type == "permissions" && c.Issuer == requirement.Issuer);
 
-            if (permissions.Any(p => p == requirement.Permissions))
+            if (permissions.Any(p => p.Value == requirement.Permissions))
                 context.Succeed(requirement);
 
             return Task.CompletedTask;
