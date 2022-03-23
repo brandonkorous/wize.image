@@ -38,6 +38,7 @@ namespace wize.image.odata.V1.Controllers
         }
 
         //[Authorize]
+        [Authorize("list:image")]
         [HttpGet]
         [EnableQuery(AllowedFunctions = AllowedFunctions.None, AllowedQueryOptions = AllowedQueryOptions.None)]
         public virtual async Task<Microsoft.AspNetCore.Mvc.FileContentResult> GetImage([FromODataUri] Guid imageId)
@@ -59,6 +60,7 @@ namespace wize.image.odata.V1.Controllers
             return null;
         }
 
+        [Authorize("list:image")]
         [HttpGet]
         [EnableQuery(AllowedFunctions = AllowedFunctions.None, AllowedQueryOptions = AllowedQueryOptions.None)]
         public virtual async Task<Microsoft.AspNetCore.Mvc.FileContentResult> GetSizedImage([FromODataUri] Guid imageId, [FromODataUri] int height, [FromODataUri] int width)

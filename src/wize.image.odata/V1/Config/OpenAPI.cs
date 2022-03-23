@@ -14,7 +14,6 @@ namespace wize.image.odata.V1.Config
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, OpenAPIOptions>();
             services.AddSwaggerGen(options =>
             {
-                //options.ResolveConflictingActions(a => a.First());
                 options.OperationFilter<OpenAPIParameters>();
                 options.IgnoreObsoleteProperties();
                 options.CustomSchemaIds(s => s.FullName);

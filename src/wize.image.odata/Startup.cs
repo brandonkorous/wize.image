@@ -1,26 +1,16 @@
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Net.Http.Headers;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using wize.common.tenancy;
 using wize.common.tenancy.Interfaces;
 using wize.common.tenancy.Providers;
 using wize.image.data.V1;
 using wize.image.odata.V1.Config;
-using wize.image.odata.V1.ModelConfigurations;
 
 namespace wize.image.odata
 {

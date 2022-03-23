@@ -11,7 +11,6 @@ namespace wize.image.odata.V1.Config
     {
         public static IServiceCollection AddODataMvc(this IServiceCollection services)
         {
-            //services.AddRouting();
             services.AddOData().EnableApiVersioning();
 
             services.AddODataApiExplorer(options =>
@@ -33,9 +32,6 @@ namespace wize.image.odata.V1.Config
                 options.ServiceProvider.GetRequiredService<ODataOptions>().UrlKeyDelimiter = Microsoft.OData.ODataUrlKeyDelimiter.Parentheses;
                 options.MapVersionedODataRoute("odata", "v{version:apiVersion}", edmModels);
             });
-
-            //app.UseODataBatching();
-
             return app;
         }
     }
