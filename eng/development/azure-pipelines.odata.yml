@@ -9,7 +9,7 @@ resources:
 - repo: self
 
 variables:
-
+- group: services-primary-variables
   # Container registry service connection established during pipeline creation
   imageRepository: 'wizeimageodata'
   dockerfilePath: '**/wize.image.odata/Dockerfile'
