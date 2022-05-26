@@ -11,12 +11,14 @@ resources:
 variables:
 - group: services-primary-variables
   # Container registry service connection established during pipeline creation
-  imageRepository: 'wizeimageodata'
-  dockerfilePath: '**/wize.image.odata/Dockerfile'
-  tag: '$(Build.BuildId)'
-
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+- name: imageRepository
+  value: 'wizeimageodata'
+- name: dockerfilePath
+  value: '**/wize.image.odata/Dockerfile'
+- name: tag
+  value: '$(Build.BuildId)'
+- name: vmImageName
+  value: 'ubuntu-latest'
 
 stages:
 - stage: Build
