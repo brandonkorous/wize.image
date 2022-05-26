@@ -11,12 +11,13 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '93030bb1-ee92-44e8-b94d-74b682629e09'
+  dockerRegistryServiceConnection: '$(DockerRegistryServiceConnection)'
   imageRepository: 'wizeimageodata'
-  containerRegistry: 'brandonkorouscontainers.azurecr.io'
+  imagePullSecret: '$(ImagePullSecret)'
+  containerRegistry: '$(ContainerRegistry)'
   dockerfilePath: '**/wize.image.odata/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'brandonkorouscontainers-auth'
+  kubernetesServiceConnection: '$(KubernetesServiceConnection)'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -64,7 +65,7 @@ stages:
               secretType: generic
               secretName: appinsights-image-secrets
               secretArguments: --from-literal=ApplicationInsights_ConnectionString="$(ApplicationInsights:ConnectionString)"
-              kubernetesServiceConnection: 'svc-con-aks-korous-kube-development'
+              kubernetesServiceConnection: $(kubernetesServiceConnection)
               namespace: development
           - task: KubernetesManifest@0
             displayName: Create secret
@@ -73,7 +74,7 @@ stages:
               secretType: generic
               secretName: connectionstrings-image-secrets
               secretArguments: --from-literal=ConnectionStrings_AzureBlobStorage="$(ConnectionStrings:AzureBlobStorage)" --from-literal=ConnectionStrings_TenantsContext="$(ConnectionStrings:TenantsContext)" --from-literal=ConnectionStrings_WizeWorksContext="$(ConnectionStrings:WizeWorksContext)" --from-literal=ConnectionStrings_Sentry="$(ConnectionStrings:Sentry)"
-              kubernetesServiceConnection: 'svc-con-aks-korous-kube-development'
+              kubernetesServiceConnection: $(kubernetesServiceConnection)
               namespace: development
           - task: KubernetesManifest@0
             displayName: Create secret
@@ -82,7 +83,7 @@ stages:
               secretType: generic
               secretName: authentication-image-secrets
               secretArguments: --from-literal=JwtAuthentication_ValidAudience="$(JwtAuthentication:ValidAudience)" --from-literal=JwtAuthentication_ValidIssuer="$(JwtAuthentication:ValidIssuer)"
-              kubernetesServiceConnection: 'svc-con-aks-korous-kube-development'
+              kubernetesServiceConnection: $(kubernetesServiceConnection)
               namespace: development
           - task: KubernetesManifest@0
             displayName: Create secret
@@ -91,13 +92,13 @@ stages:
               secretType: generic
               secretName: auth0-image-secrets
               secretArguments: --from-literal=Auth0_Authority="$(Auth0:Authority)" --from-literal=Auth0_ClientSecret="$(Auth0:ClientSecret)" --from-literal=Auth0_ClientId="$(Auth0:ClientId)" --from-literal=Auth0_Audience="$(Auth0:Audience)"
-              kubernetesServiceConnection: 'svc-con-aks-korous-kube-development'
+              kubernetesServiceConnection: $(kubernetesServiceConnection)
               namespace: development
           - task: KubernetesManifest@0
             displayName: Create imagePullSecret
             inputs:
               action: 'createSecret'
-              kubernetesServiceConnection: 'svc-con-aks-korous-kube-development'
+              kubernetesServiceConnection: $(kubernetesServiceConnection)
               namespace: 'development'
               secretType: 'dockerRegistry'
               secretName: '$(imagePullSecret)'
@@ -107,7 +108,7 @@ stages:
             displayName: Deploy to Kubernetes cluster
             inputs:
               action: 'deploy'
-              kubernetesServiceConnection: 'svc-con-aks-korous-kube-development'
+              kubernetesServiceConnection: $(kubernetesServiceConnection)
               namespace: 'development'
               manifests: |
                 $(Pipeline.Workspace)/eng/development/deployment.odata.yml
