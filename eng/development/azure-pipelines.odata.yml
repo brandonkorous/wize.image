@@ -17,7 +17,7 @@ variables:
   containerRegistry: '$(ContainerRegistry)'
   dockerfilePath: '**/wize.image.odata/Dockerfile'
   tag: '$(Build.BuildId)'
-  kubernetesServiceConnection: '$(KubernetesServiceConnection)'
+  kubernetesServiceConnection: ${{KubernetesServiceConnection}}
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
