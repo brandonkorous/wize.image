@@ -10,7 +10,6 @@ resources:
 
 variables:
 - group: services-primary-variables
-  # Container registry service connection established during pipeline creation
 - name: imageRepository
   value: 'wizeimageodata'
 - name: dockerfilePath
