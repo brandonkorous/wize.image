@@ -11,7 +11,7 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '93030bb1-ee92-44e8-b94d-74b682629e09'
+  # dockerRegistryServiceConnection: '93030bb1-ee92-44e8-b94d-74b682629e09'
   imageRepository: 'wizeimageodata'
   imagePullSecret: '$(ImagePullSecret)'
   containerRegistry: '$(ContainerRegistry)'
@@ -37,7 +37,7 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
+        containerRegistry: $(DockerRegistryServiceConnection)
         buildContext: .
         tags: |
           $(tag)
@@ -102,7 +102,7 @@ stages:
               namespace: 'development'
               secretType: 'dockerRegistry'
               secretName: '$(imagePullSecret)'
-              dockerRegistryEndpoint: '$(dockerRegistryServiceConnection)'
+              dockerRegistryEndpoint: '$(DockerRegistryServiceConnection)'
               
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
