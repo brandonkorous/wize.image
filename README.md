@@ -1,3 +1,4 @@
+![logo](https://user-images.githubusercontent.com/13042540/200753089-238197a6-3af2-4bf6-af2d-21ceaca83aea.png)
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/brandonkorous/wize.image/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
